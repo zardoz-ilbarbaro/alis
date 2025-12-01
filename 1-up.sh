@@ -18,6 +18,8 @@
 #tput setaf 8 = light blue
 ##################################################################################################################
 
+source="/home/zardoz/ARCH-ISO/AA/2-setup-git.sh"
+
 # change a commit comment
 # git commit --amend -m "more info"
 # git push --force origin
@@ -39,7 +41,7 @@ echo "####################################"
 
 read input
 
-# Committing to the local repository with a message containing the time details and commit text
+# Committing to the local repository with a message containing and commit text
 
 git commit -m "$input"
 
