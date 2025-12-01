@@ -25,7 +25,6 @@ echo "################################################################"
 echo
 chmod +x /alis/*.sh
 chmod +x /alis/configs/*.sh
-chmod +x /alis/configz/*.sh
 echo
 echo "################################################################"
 echo "Shall we start the alis script"
