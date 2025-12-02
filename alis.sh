@@ -1155,67 +1155,6 @@ function network() {
     arch-chroot "${MNT_DIR}" systemctl enable NetworkManager.service
 }
 
-function misc() {
-   print_step "misc()"
-
-    if [ -n "$CUSTOM_SHELL" ]; then
-        execute_step "custom_shell"
-    fi
-    if [ "$FWUPD" == "true" ]; then
-        execute_step "fwupd"
-    fi
-    if [ "$VAGRANT" == "true" ]; then
-        execute_step "vagrant"
-    fi
-}
-
-function custom_shell() {
-    print_step "custom_shell()"
-
-    local CUSTOM_SHELL_PATH=""
-    case "$CUSTOM_SHELL" in
-        "zsh" )
-            pacman_install "zsh"
-            local CUSTOM_SHELL_PATH="/usr/bin/zsh"
-            ;;
-        "dash" )
-            pacman_install "dash"
-            local CUSTOM_SHELL_PATH="/usr/bin/dash"
-            ;;
-        "fish" )
-            pacman_install "fish"
-            local CUSTOM_SHELL_PATH="/usr/bin/fish"
-            ;;
-    esac
-
-    if [ -n "$CUSTOM_SHELL_PATH" ]; then
-        custom_shell_user "root" $CUSTOM_SHELL_PATH
-        custom_shell_user "$USER_NAME" $CUSTOM_SHELL_PATH
-        for U in "${ADDITIONAL_USERS[@]}"; do
-            local S=()
-            IFS='=' read -ra S <<< "$U"
-            local USER=${S[0]}
-            custom_shell_user "$USER" $CUSTOM_SHELL_PATH
-        done
-    fi
-}
-
-function fwupd() {
-    print_step "fwupd()"
-
-    pacman_install "fwupd"
-}
-
-function vagrant() {
-    print_step "vagrant()"
-
-    pacman_install "openssh"
-    create_user "vagrant" "vagrant"
-    arch-chroot "${MNT_DIR}" systemctl enable sshd.service
-    arch-chroot "${MNT_DIR}" ssh-keygen -A
-    arch-chroot "${MNT_DIR}" sshd -t
-}
-
 function virtualbox() {
     print_step "virtualbox()"
 
