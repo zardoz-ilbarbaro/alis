@@ -18,7 +18,7 @@
 #tput setaf 8 = light blue
 ##################################################################################################################
 
-source="/home/zardoz/ARCH-ISO/AA/2-setup-git.sh"
+#source="/home/zardoz/ARCH-ISO/AA/2-setup-git.sh"
 
 # change a commit comment
 # git commit --amend -m "more info"
