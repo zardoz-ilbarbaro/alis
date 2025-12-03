@@ -582,7 +582,7 @@ function install() {
             local COUNTRIES+=(--country "$COUNTRY")
         done
         pacman -Sy --noconfirm reflector
-        reflector "${COUNTRIES[@]}" --latest 25 --age 24 --protocol https --completion-percent 100 --sort rate --save /etc/pacman.d/mirrorlist
+        reflector "${COUNTRIES[@]}" --age 6 --latest 20  --fastest 20 --threads 5 --sort rate --protocol https --completion-percent 100 --save /etc/pacman.d/mirrorlist
     fi
 
     sed -i 's/#Color/Color/' /etc/pacman.conf
@@ -628,7 +628,7 @@ ${COUNTRIES[@]}
 --sort rate
 --save /etc/pacman.d/mirrorlist
 EOT
-        arch-chroot "${MNT_DIR}" reflector "${COUNTRIES[@]}" --latest 25 --age 24 --protocol https --completion-percent 100 --sort rate --save /etc/pacman.d/mirrorlist
+        arch-chroot "${MNT_DIR}" reflector "${COUNTRIES[@]}" --age 6 --latest 20  --fastest 20 --threads 5 --sort rate --protocol https --completion-percent 100 --save /etc/pacman.d/mirrorlist
         arch-chroot "${MNT_DIR}" systemctl enable reflector.timer
     fi
 
