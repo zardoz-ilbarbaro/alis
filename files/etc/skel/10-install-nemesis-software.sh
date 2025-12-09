@@ -58,6 +58,16 @@ sudo pacman -S --noconfirm --needed zardoz-neo-candy-icons-git
 
 
 echo
+  tput setaf 3
+  echo "##############################################################"
+  echo "############### Removing packages folder"
+  echo "##############################################################"
+  tput sgr0
+  echo
+  rm /home/zardoz/packages
+
+
+echo
 tput setaf 6
 echo "##############################################################"
 echo "###################  $(basename $0) done"
