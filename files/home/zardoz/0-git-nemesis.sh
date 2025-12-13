@@ -9,8 +9,8 @@ echo "################################################################"
 echo
 read response
 if [[ "$response" == [yY] ]]; then
-
-git clone https://github.com/zardoz-ilbarbaro/zardoz-nemesis.git
+    git clone https://github.com/zardoz-ilbarbaro/zardoz-nemesis.git
+fi
 
 echo
 echo "################################################################"
